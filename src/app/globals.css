@@ -1,26 +1,166 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* Brand colors — off-white/ink monochrome with a dusty-rose accent
+     (replaces the earlier blue brand palette). Token names are kept as-is
+     so every existing text-blue-bright / bg-grad-blue / text-gradient-blue
+     / gray-soft usage across the site picks up the new palette without
+     touching each call site. */
+  --color-blue-bright: #b98673;
+  --color-blue-deep: #8a6152;
+  --color-chrome-1: #4a4844;
+  --color-chrome-2: #86837c;
+  --color-chrome-3: #17181a;
+  --color-gray-soft: #6b6862;
+  --color-base-white: #f1efea;
+  --color-base-off: #e8e5de;
+  --color-base-dark: #17181a;
+  --color-base-dark-2: #1f2023;
+  --color-charcoal: #1a1a1a;
+
+  --font-display: var(--font-fraunces);
+  --font-sans: var(--font-grotesk);
+
+  --animate-marquee: marquee 28s linear infinite;
+  --animate-marquee-slow: marquee 60s linear infinite;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
   }
 }
 
+:root {
+  --background: var(--color-base-white);
+  --foreground: var(--color-base-dark);
+  --grad-blue: linear-gradient(135deg, #b98673 0%, #8a6152 100%);
+  --grad-chrome: linear-gradient(135deg, #4a4844 0%, #86837c 50%, #17181a 100%);
+  --grad-chrome-sweep: linear-gradient(
+    115deg,
+    #17181a 0%,
+    #86837c 35%,
+    #17181a 50%,
+    #86837c 65%,
+    #17181a 100%
+  );
+}
+
+* {
+  border-color: color-mix(in srgb, currentColor 12%, transparent);
+}
+
+html,
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  overscroll-behavior: none;
+}
+
+body {
+  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+}
+
+::selection {
+  background: var(--color-blue-bright);
+  color: var(--color-base-white);
+}
+
+/* Custom scrollbar — blue gradient thumb */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--grad-blue);
+  border-radius: 999px;
+  border: 2px solid var(--color-base-white);
+}
+
+.scrollbar-hide {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.text-gradient-blue {
+  background: var(--grad-blue);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.text-gradient-chrome {
+  background: var(--grad-chrome);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.link-hover-gradient {
+  transition: color 0.3s ease;
+}
+.link-hover-gradient:hover {
+  background: var(--grad-blue);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.bg-grad-blue {
+  background: var(--grad-blue);
+}
+
+.bg-grad-chrome {
+  background: var(--grad-chrome);
+}
+
+.chrome-sweep {
+  position: relative;
+  overflow: hidden;
+}
+.chrome-sweep::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    100deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.55) 45%,
+    transparent 60%
+  );
+  transform: translateX(-120%);
+  transition: transform 0.7s ease;
+}
+.chrome-sweep:hover::after {
+  transform: translateX(120%);
+}
+
+/* Grain / noise overlay */
+.noise-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.05;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 160px 160px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
 }
