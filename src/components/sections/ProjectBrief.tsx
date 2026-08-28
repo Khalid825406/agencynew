@@ -30,9 +30,9 @@ export default function ProjectBrief() {
             gradientWords={["project."]}
             className="mx-auto font-display text-4xl sm:text-6xl font-medium leading-[1.02] tracking-tight"
           />
-          <p className="mx-auto mt-6 max-w-md text-white/40">
+          <p className="mx-auto mt-6 max-w-md text-xs font-light sm:text-sm text-white/40">
             The more you tell us up front, the faster we can scope it. Every
-            field but the message is optional — send what you have.
+            field but the message is optional. Send what you have.
           </p>
         </Reveal>
 
@@ -40,7 +40,7 @@ export default function ProjectBrief() {
           {submitted ? (
             <div className="flex h-full min-h-[320px] flex-col items-center justify-center rounded-2xl border border-white/10 text-center">
               <p className="font-display text-3xl text-gradient-blue">Brief received.</p>
-              <p className="mt-3 text-white/50">We&rsquo;ll be in touch within one business day.</p>
+              <p className="mt-3 text-xs font-light sm:text-sm text-white/50">We&rsquo;ll be in touch within one business day.</p>
             </div>
           ) : (
             <form

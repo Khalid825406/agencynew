@@ -6,7 +6,7 @@ import AbstractPattern from "@/components/graphics/AbstractPattern";
 import Reveal from "@/components/Reveal";
 import { BLOG_POSTS } from "@/lib/data";
 
-const TITLE = "Insights — NexBrave Solutions";
+const TITLE = "Insights | NexBrave Solutions";
 const DESCRIPTION = "Notes on design, SEO and motion from the NexBrave team.";
 
 export const metadata: Metadata = {
@@ -34,7 +34,7 @@ export default function BlogPage() {
         eyebrow="Insights"
         title="Notes from the studio."
         gradientWords={["studio."]}
-        description="Short, opinionated writing on design, engineering, SEO and motion — what worked, what didn't."
+        description="Short, opinionated writing on design, engineering, SEO and motion: what worked, what didn't."
       />
 
       <section className="bg-[#0A0E14] py-12 sm:py-20">
@@ -62,7 +62,7 @@ export default function BlogPage() {
                 <h2 className="font-display text-3xl font-medium leading-tight tracking-tight sm:text-5xl">
                   {featured.title}
                 </h2>
-                <p className="mt-4 max-w-xl text-white/70">{featured.excerpt}</p>
+                <p className="mt-4 max-w-xl text-xs font-light sm:text-sm text-white/70">{featured.excerpt}</p>
                 <span className="mt-6 inline-block text-sm">Read article →</span>
               </div>
               <div className="absolute inset-0 z-0 bg-black/0 transition-colors duration-500 group-hover:bg-black/10" />
@@ -90,7 +90,7 @@ export default function BlogPage() {
                     <h3 className="font-display text-2xl font-medium leading-snug">
                       {post.title}
                     </h3>
-                    <p className="mt-2 line-clamp-2 text-sm text-white/70">{post.excerpt}</p>
+                    <p className="mt-2 line-clamp-2 text-xs font-light sm:text-sm text-white/70">{post.excerpt}</p>
                   </div>
                   <div className="absolute inset-0 z-0 bg-black/0 transition-colors duration-500 group-hover:bg-black/10" />
                 </Link>

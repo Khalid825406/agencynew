@@ -2,11 +2,12 @@
 
 import { useEffect, useRef, useState } from "react";
 import { gsap, ScrollTrigger } from "@/lib/gsap";
+import Reveal from "@/components/Reveal";
 
 const STATS = [
   { value: 180, suffix: "+", label: "Projects shipped" },
   { value: 96, suffix: "", label: "Clients served" },
-  { value: 8, suffix: "", label: "Years in business" },
+  { value: 5, suffix: "", label: "Services under one roof" },
   { value: 340, suffix: "%", label: "Avg. ROI lift" },
 ];
 
@@ -56,15 +57,15 @@ export default function Stats() {
     <section ref={sectionRef} className="relative bg-[#0A0E14] py-24 text-white sm:py-32">
       <div className="mx-auto max-w-[1400px] px-6 sm:px-10">
         <div className="grid grid-cols-2 gap-y-14 gap-x-6 sm:grid-cols-4 sm:gap-x-10">
-          {STATS.map((stat) => (
-            <div key={stat.label} className="border-l border-white/10 pl-5 sm:pl-6">
+          {STATS.map((stat, i) => (
+            <Reveal key={stat.label} delay={i * 0.08} className="border-l border-white/10 pl-5 sm:pl-6">
               <div className="font-display text-5xl sm:text-6xl font-medium tracking-tight text-gradient-blue">
                 <Counter value={stat.value} suffix={stat.suffix} trigger={inView} />
               </div>
               <p className="mt-3 text-sm uppercase tracking-[0.1em] text-white/50">
                 {stat.label}
               </p>
-            </div>
+            </Reveal>
           ))}
         </div>
       </div>

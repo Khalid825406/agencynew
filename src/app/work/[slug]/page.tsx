@@ -18,7 +18,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params;
   const project = PROJECTS.find((p) => p.id === slug);
-  const title = project ? `${project.name} — NexBrave Solutions` : "Case study — NexBrave Solutions";
+  const title = project ? `${project.name} | NexBrave Solutions` : "Case study | NexBrave Solutions";
   const description = project?.summary;
 
   return {
@@ -88,7 +88,7 @@ export default async function CaseStudyPage({
             <span className="text-xs uppercase tracking-[0.2em] text-white/40">
               Overview
             </span>
-            <p className="mt-4 text-lg leading-relaxed text-white/70">{project.summary}</p>
+            <p className="mt-4 text-xs font-light sm:text-sm leading-relaxed text-white/70">{project.summary}</p>
           </Reveal>
         </div>
       </section>
@@ -101,24 +101,25 @@ export default async function CaseStudyPage({
             </span>
           </Reveal>
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-3">
-            {more.map((p) => (
-              <Link
-                key={p.id}
-                href={`/work/${p.id}`}
-                className="group relative flex h-64 flex-col justify-between overflow-hidden rounded-2xl p-7 text-white"
-                style={{ background: p.gradient }}
-              >
-                <AbstractPattern
-                  seed={p.id}
-                  className="opacity-70 transition-transform duration-700 ease-out group-hover:scale-110"
-                />
-                <span className="relative z-10 w-fit rounded-full bg-white/15 px-3 py-1 text-xs uppercase tracking-[0.15em]">
-                  {p.category}
-                </span>
-                <h3 className="relative z-10 font-display text-2xl font-medium transition-transform duration-500 group-hover:-translate-y-1">
-                  {p.name}
-                </h3>
-              </Link>
+            {more.map((p, i) => (
+              <Reveal key={p.id} delay={i * 0.08}>
+                <Link
+                  href={`/work/${p.id}`}
+                  className="group relative flex h-64 flex-col justify-between overflow-hidden rounded-2xl p-7 text-white"
+                  style={{ background: p.gradient }}
+                >
+                  <AbstractPattern
+                    seed={p.id}
+                    className="opacity-70 transition-transform duration-700 ease-out group-hover:scale-110"
+                  />
+                  <span className="relative z-10 w-fit rounded-full bg-white/15 px-3 py-1 text-xs uppercase tracking-[0.15em]">
+                    {p.category}
+                  </span>
+                  <h3 className="relative z-10 font-display text-2xl font-medium transition-transform duration-500 group-hover:-translate-y-1">
+                    {p.name}
+                  </h3>
+                </Link>
+              </Reveal>
             ))}
           </div>
         </div>

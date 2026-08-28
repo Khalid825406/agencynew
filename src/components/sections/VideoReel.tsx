@@ -39,8 +39,6 @@ export default function VideoReel() {
   return (
     <ScrollExpand
       src={VIDEO_SRC}
-      title="Our work in motion"
-      scrollHint="Scroll to expand"
       useWindowScroll
       mediaZoom={1.25}
       startWidth={46}
@@ -51,17 +49,6 @@ export default function VideoReel() {
       holdDistance={0.35}
       overlayScrim={0.35}
       enabled
-    >
-      <span className="mb-4 text-xs uppercase tracking-[0.3em] text-gray-soft">
-        Our work in motion
-      </span>
-      <h2 className="font-display text-4xl font-medium tracking-tight sm:text-6xl">
-        See how we <span className="text-gradient-blue">build</span>
-      </h2>
-      <p className="mt-4 max-w-md text-sm text-white/70 sm:text-base">
-        A two-minute look at how a NexBrave project actually comes together —
-        from first sketch to shipped product.
-      </p>
-    </ScrollExpand>
+    />
   );
 }

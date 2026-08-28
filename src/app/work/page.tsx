@@ -4,7 +4,7 @@ import CTAContact from "@/components/sections/CTAContact";
 import WorkGrid from "@/components/sections/WorkGrid";
 import { PROJECTS } from "@/lib/data";
 
-const TITLE = "Work — NexBrave Solutions";
+const TITLE = "Work | NexBrave Solutions";
 const DESCRIPTION = "Case studies across web, app, marketing, SEO and video.";
 
 export const metadata: Metadata = {
@@ -20,7 +20,7 @@ export default function WorkPage() {
     <>
       <PageHero
         eyebrow="Selected work"
-        title="Case studies that speak."
+        title="Case Studies That Speak."
         gradientWords={["speak."]}
         description={`${PROJECTS.length} projects across web, app, marketing, SEO and video. Filter by discipline, or browse it all.`}
       />

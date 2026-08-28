@@ -1,23 +1,22 @@
 import type { Metadata } from "next";
-import { Fraunces, Space_Grotesk } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
 import SmoothScroll from "@/components/providers/SmoothScroll";
 import Navbar from "@/components/nav/Navbar";
 import Footer from "@/components/sections/Footer";
 import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/seo";
 
-const fraunces = Fraunces({
-  variable: "--font-fraunces",
+// SF Pro Display itself can't be self-hosted for the web (Apple's license
+// restricts it to Apple platforms/software) — Inter is the closest legally
+// embeddable match: same clean, geometric-grotesk feel, full weight range
+// including bold. Used for both the display/heading font and body font so
+// the whole site reads as one uniform sans-serif family.
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
-  axes: ["opsz", "SOFT", "WONK"],
 });
 
-const grotesk = Space_Grotesk({
-  variable: "--font-grotesk",
-  subsets: ["latin"],
-});
-
-const TITLE = "NexBrave Solutions — Digital Agency";
+const TITLE = "NexBrave Solutions: Digital Agency";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -69,20 +68,34 @@ export const metadata: Metadata = {
 
 const organizationJsonLd = {
   "@context": "https://schema.org",
-  "@type": "Organization",
+  "@type": "ProfessionalService",
   name: SITE_NAME,
   url: SITE_URL,
+  image: `${SITE_URL}/nexbravelogobackbg.png`,
   logo: `${SITE_URL}/nexbravelogobackbg.png`,
   description: SITE_DESCRIPTION,
-  email: "hello@nexbrave.co",
-  sameAs: ["https://instagram.com", "https://linkedin.com", "https://x.com", "https://dribbble.com"],
+  telephone: "+91-80023-56170",
+  email: "bravesolution43@gmail.com",
+  priceRange: "$$",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "3A, 3rd Floor J&Sons Residence, Main Road Baragain, near Ganga Hospital",
+    addressLocality: "Ranchi",
+    addressRegion: "Jharkhand",
+    postalCode: "834009",
+    addressCountry: "IN",
+  },
+  sameAs: [
+    "https://www.facebook.com/profile.php?id=61587412182705",
+    "https://www.instagram.com/brave_solution/",
+  ],
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${fraunces.variable} ${grotesk.variable} h-full antialiased`}
+      className={`${inter.variable} h-full antialiased`}
       suppressHydrationWarning
     >
       <body className="min-h-full flex flex-col bg-[#0A0E14] text-white">

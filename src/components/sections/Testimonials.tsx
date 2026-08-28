@@ -4,50 +4,44 @@ import Reveal from "@/components/Reveal";
 const QUOTES = [
   {
     quote:
-      "NexBrave didn't just redesign our site — they rebuilt how people feel about our brand.",
-    name: "Amara Chen",
-    role: "CEO, Orbit Finance",
-    initials: "AC",
+      "NexBrave didn't just redesign our site. They rebuilt how people feel about our brand.",
+    role: "Fintech client",
+    initials: "FT",
     rating: 4.9,
   },
   {
     quote:
       "Fastest, most opinionated team we've worked with. They pushed back on our bad ideas and we're better for it.",
-    name: "Daniel Okafor",
-    role: "Founder, Haven Living",
-    initials: "DO",
+    role: "Real estate client",
+    initials: "RE",
     rating: 5.0,
   },
   {
     quote:
       "The app shipped two weeks early and still hit every milestone. The numbers say the rest.",
-    name: "Priya Nair",
-    role: "Head of Product, Pulse Fit",
-    initials: "PN",
+    role: "Health & fitness client",
+    initials: "HF",
     rating: 4.8,
   },
   {
     quote:
       "Every dollar we put into paid media finally felt accountable. NexBrave treats budget like it's their own.",
-    name: "Renee Ford",
-    role: "VP Marketing, North & Co.",
-    initials: "RF",
+    role: "Retail client",
+    initials: "RT",
     rating: 4.9,
   },
   {
     quote:
       "Our SEO traffic tripled. More importantly, it's traffic that actually converts. They get both the craft and the numbers.",
-    name: "Marcus Webb",
-    role: "CMO, Kiln Studio",
-    initials: "MW",
+    role: "Hospitality client",
+    initials: "HS",
     rating: 5.0,
   },
   {
     quote:
       "They cut our launch film like they had something to prove. Every version tested better than the last.",
-    name: "Theo Marsh",
-    role: "Creative Director, Voxel Media",
-    initials: "TM",
+    role: "Media & entertainment client",
+    initials: "ME",
     rating: 4.8,
   },
 ];
@@ -67,14 +61,13 @@ function StarIcon({ filled }: { filled: boolean }) {
 
 function ReviewCard({ q }: { q: (typeof QUOTES)[number] }) {
   return (
-    <div className="w-[320px] shrink-0 rounded-2xl border border-white/10 bg-white/[0.03] p-6 sm:w-[360px]">
+    <div className="w-[320px] shrink-0 rounded-2xl border border-white/10 bg-white/[0.03] p-6 transition-all duration-300 hover:-translate-y-1 hover:border-white/20 sm:w-[360px]">
       <div className="flex items-center gap-3">
         <div className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-grad-blue text-sm font-medium text-white">
           {q.initials}
         </div>
         <div className="min-w-0">
-          <p className="truncate text-sm font-medium text-white">{q.name}</p>
-          <p className="truncate text-xs text-white/50">{q.role}</p>
+          <p className="truncate text-sm font-medium text-white">{q.role}</p>
         </div>
       </div>
 
@@ -89,7 +82,7 @@ function ReviewCard({ q }: { q: (typeof QUOTES)[number] }) {
         </div>
       </div>
 
-      <p className="mt-3 line-clamp-2 text-sm leading-relaxed text-white/60">{q.quote}</p>
+      <p className="mt-3 line-clamp-2 text-xs font-light sm:text-sm leading-relaxed text-white/60">{q.quote}</p>
     </div>
   );
 }

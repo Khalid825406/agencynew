@@ -4,7 +4,7 @@ export const SERVICES = [
     n: "01",
     name: "Web Development",
     blurb: "Fast, accessible, framework-grade websites and web apps.",
-    long: "We design and build websites and web applications that load fast, rank well and hold up under real traffic — from marketing sites to full product platforms.",
+    long: "We design and build websites and web applications that load fast, rank well and hold up under real traffic, from marketing sites to full product platforms.",
     deliverables: [
       "Custom design & front-end build",
       "CMS / headless integration",
@@ -34,7 +34,7 @@ export const SERVICES = [
     n: "03",
     name: "Digital Marketing",
     blurb: "Campaigns across search, social and paid that compound.",
-    long: "We run full-funnel marketing — paid, social, email and CRO — with a bias toward channels that compound instead of campaigns that burn out.",
+    long: "We run full-funnel marketing across paid, social, email and CRO, with a bias toward channels that compound instead of campaigns that burn out.",
     deliverables: [
       "Channel strategy & audience mapping",
       "Paid social & search campaigns",
@@ -49,7 +49,7 @@ export const SERVICES = [
     n: "04",
     name: "SEO Services",
     blurb: "Technical + content SEO that actually moves rankings.",
-    long: "Technical audits, content strategy and link building that move rankings — and more importantly, move revenue.",
+    long: "Technical audits, content strategy and link building that move rankings, and more importantly, move revenue.",
     deliverables: [
       "Technical SEO audit & fixes",
       "Content & keyword strategy",
@@ -85,7 +85,7 @@ export const PROJECTS = [
     gradient: "linear-gradient(135deg,#00AEEF,#0033A0)",
     result: "+64% conversion after redesign",
     summary:
-      "A ground-up redesign of Orbit's investing dashboard — rebuilt for speed, clarity and trust, cutting onboarding drop-off in half.",
+      "A ground-up redesign of Orbit's investing dashboard, rebuilt for speed, clarity and trust, cutting onboarding drop-off in half.",
     featured: true,
   },
   {
@@ -107,7 +107,7 @@ export const PROJECTS = [
     gradient: "linear-gradient(135deg,#0033A0,#808080)",
     result: "2.1x patient sign-ups after launch",
     summary:
-      "A HIPAA-conscious patient portal rebuilt from the ground up — clearer booking flows, faster load times, more than double the sign-ups.",
+      "A HIPAA-conscious patient portal rebuilt from the ground up: clearer booking flows, faster load times, more than double the sign-ups.",
     featured: false,
   },
   {
@@ -118,7 +118,7 @@ export const PROJECTS = [
     gradient: "linear-gradient(135deg,#808080,#1A1D23)",
     result: "120K downloads in first quarter",
     summary:
-      "A cross-platform fitness app built from scratch — shipped two weeks early and hit 120K downloads within its first quarter live.",
+      "A cross-platform fitness app built from scratch, shipped two weeks early and hit 120K downloads within its first quarter live.",
     featured: true,
   },
   {
@@ -129,7 +129,7 @@ export const PROJECTS = [
     gradient: "linear-gradient(135deg,#00AEEF,#1A1D23)",
     result: "4.6★ rating, 80K monthly active users",
     summary:
-      "A city transit companion app rebuilt for reliability under real-world network conditions — now the top-rated app in its category.",
+      "A city transit companion app rebuilt for reliability under real-world network conditions, now the top-rated app in its category.",
     featured: false,
   },
   {
@@ -162,7 +162,7 @@ export const PROJECTS = [
     gradient: "linear-gradient(135deg,#1A1D23,#0033A0)",
     result: "2.4x email revenue in 90 days",
     summary:
-      "A lifecycle marketing rebuild for Bright Roast's subscription program — smarter segmentation, sharper copy, more than double the email revenue.",
+      "A lifecycle marketing rebuild for Bright Roast's subscription program: smarter segmentation, sharper copy, more than double the email revenue.",
     featured: false,
   },
   {
@@ -228,7 +228,7 @@ export const PROJECTS = [
     gradient: "linear-gradient(135deg,#0033A0,#1A1D23)",
     result: "6.8M views, 3x landing page conversion",
     summary:
-      "A social-native video series for Solace's product launch — cut for the first three seconds first, tripling landing page conversion.",
+      "A social-native video series for Solace's product launch, cut for the first three seconds first, tripling landing page conversion.",
     featured: false,
   },
 ] as const;
@@ -254,7 +254,7 @@ export const BLOG_POSTS = [
     slug: "designing-for-speed",
     title: "Designing for speed: why fast feels premium",
     excerpt:
-      "Performance isn't just an engineering metric — it's a design decision users feel in the first 200ms.",
+      "Performance isn't just an engineering metric. It's a design decision users feel in the first 200ms.",
     category: "Design",
     date: "2026-06-02",
     gradient: "linear-gradient(135deg,#00AEEF,#0033A0)",

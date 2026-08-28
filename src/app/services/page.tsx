@@ -9,9 +9,9 @@ import AbstractPattern from "@/components/graphics/AbstractPattern";
 import Reveal from "@/components/Reveal";
 import { SERVICES, PROJECTS } from "@/lib/data";
 
-const TITLE = "Services — NexBrave Solutions";
+const TITLE = "Services | NexBrave Solutions";
 const DESCRIPTION =
-  "Web development, app development, digital marketing, SEO and video editing — five disciplines, one team.";
+  "Web development, app development, digital marketing, SEO and video editing: five disciplines, one team.";
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -48,7 +48,7 @@ export default function ServicesPage() {
                         <h2 className="mt-3 font-display text-3xl font-medium tracking-tight sm:text-4xl">
                           {s.name}
                         </h2>
-                        <p className="mt-4 max-w-md text-white/60">{s.long}</p>
+                        <p className="mt-4 max-w-md text-xs font-light sm:text-sm text-white/60">{s.long}</p>
 
                         <ul className="mt-8 flex flex-col gap-3">
                           {s.deliverables.map((d) => (
@@ -90,7 +90,7 @@ export default function ServicesPage() {
                           <div className="relative h-40 overflow-hidden rounded-2xl border border-white/10 bg-[#050810] sm:h-48">
                             <Image
                               src="/webdeveloper.png"
-                              alt="Web development — laptop and phone showing a site being built"
+                              alt="Web development: laptop and phone showing a site being built"
                               fill
                               sizes="(min-width: 1024px) 45vw, 90vw"
                               className="object-cover"

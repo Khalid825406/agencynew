@@ -4,8 +4,8 @@ import ProjectBrief from "@/components/sections/ProjectBrief";
 import ContactIcon from "@/components/graphics/ContactIcon";
 import Reveal from "@/components/Reveal";
 
-const TITLE = "Contact — NexBrave Solutions";
-const DESCRIPTION = "Tell us about your project — we reply within one business day.";
+const TITLE = "Contact | NexBrave Solutions";
+const DESCRIPTION = "Tell us about your project. We reply within one business day.";
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -16,9 +16,19 @@ export const metadata: Metadata = {
 };
 
 const INFO = [
-  { label: "Email", value: "hello@nexbrave.co", href: "mailto:hello@nexbrave.co", icon: "email" },
-  { label: "Phone", value: "+1 (415) 555-0134", href: "tel:+14155550134", icon: "phone" },
-  { label: "Studio", value: "San Francisco, CA", href: undefined, icon: "pin" },
+  {
+    label: "Email",
+    value: "bravesolution43@gmail.com",
+    href: "mailto:bravesolution43@gmail.com",
+    icon: "email",
+  },
+  { label: "Phone", value: "+91 80023 56170", href: "tel:+918002356170", icon: "phone" },
+  {
+    label: "Studio",
+    value: "3A, 3rd Floor J&Sons Residence, Main Road Baragain, near Ganga Hospital, Ranchi, Jharkhand 834009",
+    href: undefined,
+    icon: "pin",
+  },
 ];
 
 export default function ContactPage() {
@@ -28,7 +38,7 @@ export default function ContactPage() {
         eyebrow="Get in touch"
         title="Let's start something."
         gradientWords={["something."]}
-        description="Tell us about your project, your timeline, and your budget range — we reply within one business day, usually faster."
+        description="Tell us about your project, your timeline, and your budget range. We reply within one business day, usually faster."
       />
 
       <section className="bg-[#0A0E14] py-20 text-white sm:py-28">
@@ -63,10 +73,10 @@ export default function ContactPage() {
                 <span className="text-xs uppercase tracking-[0.25em] text-white/40">
                   Studio hours
                 </span>
-                <p className="mt-3 text-sm text-white/60">
-                  Monday – Friday, 9am – 6pm PT
+                <p className="mt-3 text-xs font-light sm:text-sm text-white/60">
+                  Monday – Saturday, IST
                   <br />
-                  Async replies on weekends for urgent briefs.
+                  Async replies outside working hours for urgent briefs.
                 </p>
               </div>
             </Reveal>
@@ -76,7 +86,7 @@ export default function ContactPage() {
               className="relative h-[320px] overflow-hidden rounded-2xl border border-white/10 sm:h-[420px] lg:h-full"
             >
               <iframe
-                src="https://www.google.com/maps?q=San+Francisco,CA&output=embed"
+                src="https://www.google.com/maps?q=3A+3rd+Floor+J%26Sons+Residence,+Main+Road+Baragain,+near+Ganga+Hospital,+Ranchi,+Jharkhand+834009&output=embed"
                 title="NexBrave Solutions studio location"
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"

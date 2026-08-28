@@ -2,18 +2,20 @@
 
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
-import type { ReactNode } from "react";
+import type { CSSProperties, ReactNode } from "react";
 
 export default function Reveal({
   children,
   delay = 0,
   y = 28,
   className = "",
+  style,
 }: {
   children: ReactNode;
   delay?: number;
   y?: number;
   className?: string;
+  style?: CSSProperties;
 }) {
   // Server has no access to prefers-reduced-motion, so it always renders the
   // animated version. Defaulting to the same thing on the client's first
@@ -32,7 +34,11 @@ export default function Reveal({
   }, []);
 
   if (reduced) {
-    return <div className={className}>{children}</div>;
+    return (
+      <div className={className} style={style}>
+        {children}
+      </div>
+    );
   }
 
   return (
@@ -42,6 +48,7 @@ export default function Reveal({
       viewport={{ once: true, margin: "-10% 0px -10% 0px" }}
       transition={{ duration: 0.7, delay, ease: [0.16, 1, 0.3, 1] }}
       className={className}
+      style={style}
     >
       {children}
     </motion.div>

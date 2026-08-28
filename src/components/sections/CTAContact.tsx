@@ -28,18 +28,18 @@ export default function CTAContact() {
             />
 
             <a
-              href="mailto:hello@nexbrave.co"
+              href="mailto:bravesolution43@gmail.com"
               className="group mt-10 inline-block font-display text-2xl sm:text-3xl text-white/80 transition-colors hover:text-white"
             >
-              hello@nexbrave.co
+              bravesolution43@gmail.com
               <span className="ml-3 inline-block transition-transform duration-300 group-hover:translate-x-2 group-hover:-translate-y-1">
                 ↗
               </span>
             </a>
 
-            <p className="mt-10 max-w-sm text-sm text-white/40">
+            <p className="mt-10 max-w-sm text-xs font-light sm:text-sm text-white/40">
               Prefer a call? Tell us the brief and we&rsquo;ll get back within one
-              business day — usually faster.
+              business day, usually faster.
             </p>
           </Reveal>
 
@@ -47,7 +47,7 @@ export default function CTAContact() {
             {submitted ? (
               <div className="flex h-full min-h-[320px] flex-col items-center justify-center rounded-2xl border border-white/10 text-center">
                 <p className="font-display text-3xl text-gradient-blue">Message sent.</p>
-                <p className="mt-3 text-white/50">We&rsquo;ll be in touch shortly.</p>
+                <p className="mt-3 text-xs font-light sm:text-sm text-white/50">We&rsquo;ll be in touch shortly.</p>
               </div>
             ) : (
               <form

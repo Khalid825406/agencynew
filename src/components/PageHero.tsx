@@ -13,7 +13,7 @@ export default function PageHero({
   description?: string;
 }) {
   return (
-    <section className="relative overflow-hidden bg-base-white pb-20 pt-40 sm:pb-28 sm:pt-48 text-charcoal">
+    <section className="relative overflow-hidden bg-charcoal pb-20 pt-40 sm:pb-28 sm:pt-48 text-base-white">
       <NoiseOverlay />
       <div className="pointer-events-none absolute -top-32 left-1/2 h-[420px] w-[420px] -translate-x-1/2 rounded-full bg-blue-bright/15 blur-[140px]" />
       <div className="relative mx-auto max-w-[1400px] px-6 sm:px-10">
@@ -28,7 +28,7 @@ export default function PageHero({
           className="font-display text-[11vw] sm:text-6xl lg:text-7xl font-medium leading-[0.98] tracking-tight"
         />
         {description && (
-          <p className="mt-8 max-w-lg text-base sm:text-lg text-charcoal/60">{description}</p>
+          <p className="mt-8 max-w-lg text-xs font-light sm:text-sm text-white/60">{description}</p>
         )}
       </div>
     </section>

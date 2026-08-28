@@ -7,7 +7,7 @@ interface KineticTextProps {
   text: string;
   className?: string;
   delay?: number;
-  as?: "h1" | "h2" | "h3" | "p";
+  as?: "h1" | "h2" | "h3" | "p" | "span";
   gradientWords?: string[];
 }
 

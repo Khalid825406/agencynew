@@ -18,7 +18,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params;
   const post = BLOG_POSTS.find((p) => p.slug === slug);
-  const title = post ? `${post.title} — NexBrave Solutions` : "Insights — NexBrave Solutions";
+  const title = post ? `${post.title} | NexBrave Solutions` : "Insights | NexBrave Solutions";
   const description = post?.excerpt;
 
   return {
@@ -44,14 +44,29 @@ function formatDate(date: string) {
   });
 }
 
-const BODY_COPY =
-  "This is where the full piece would run. We keep our writing short and " +
-  "opinionated — no 3,000-word SEO filler, just what we'd tell a client " +
-  "over coffee. Reach out if you want the long version, or better yet, " +
-  "let's talk about your project instead.";
+const BODY_COPY: Record<string, string[]> = {
+  "designing-for-speed": [
+    "Users don't benchmark your site. They feel it. The gap between a page that responds instantly and one that makes them wait even 400ms shows up as a gut reaction, not a stat, and that reaction shapes whether they trust what they're looking at before they've read a word of it.",
+    "We treat performance as a design constraint from the first wireframe, not a cleanup pass before launch. That means choosing image formats and layout strategies that don't fight the browser, deferring anything that isn't needed for the first paint, and testing on the kind of mid-tier phone and patchy connection most of the audience is actually using, not the developer's fiber connection and flagship laptop.",
+    "The payoff compounds. Faster sites rank better, convert better, and get abandoned less. But the part that's easy to miss is the brand signal: a site that loads instantly reads as more credible before the visitor has evaluated a single claim on the page. Speed is a design decision that happens to also be an engineering one.",
+    "In practice this shows up as unglamorous choices: shipping less JavaScript, sizing images correctly instead of scaling them down in CSS, avoiding layout shift as content loads. None of it is exciting to talk about. All of it is the difference between a site that feels premium and one that feels like it's apologizing for itself.",
+  ],
+  "seo-in-the-age-of-ai-search": [
+    "Search results used to be ten blue links. Increasingly, they're a synthesized answer with citations, and the click a page used to get for ranking first now goes to whichever source the answer engine trusted enough to quote. That's a real shift in how visibility works, not a rebrand of the same old SEO playbook.",
+    "The fundamentals still matter: clean technical structure, fast pages, content that actually answers the question in the title. What's changed is the premium on being unambiguous. Answer engines reward pages that state a clear position, back it with specifics, and structure information so it can be lifted cleanly into a summary. Vague, keyword-stuffed pages that used to eke out rankings on volume alone have nowhere left to hide.",
+    "Our approach has shifted accordingly: fewer pages chasing the same broad keyword, more pages that each answer one real question thoroughly, with schema markup and clear headings doing the work of making that structure legible to a crawler or a model. We're also watching referral patterns more closely than raw rank: where the click comes from is starting to matter as much as whether you show up at all.",
+    "None of this makes technical SEO or content strategy obsolete. It makes sloppy versions of both obsolete. The sites that keep winning are the ones that were already built to be genuinely useful, not just optimized to game a ranking signal that's now half a decade out of date.",
+  ],
+  "the-30-second-rule-for-launch-films": [
+    "Nobody owes your video a second watch. On a feed, the entire pitch has to land before a thumb finishes its next scroll, which in practice means the first three seconds are doing more work than the rest of the edit combined.",
+    "We cut backwards from that constraint. Instead of building a narrative arc and hoping the hook survives the edit, we start with the single frame or line that has to stop the scroll, then build outward from it. If the opening doesn't survive on mute with no context, it doesn't survive at all. Most of the audience will never turn their sound on.",
+    "That discipline changes what gets cut, not just how it's paced. Establishing shots that would open a traditional trailer get compressed or dropped entirely. Text on screen replaces voiceover setup. The product or the payoff shows up before the viewer has had time to decide whether they care.",
+    "It's a different craft than long-form editing, and it rewards a kind of ruthlessness that's uncomfortable if you're precious about the footage. But it's also the only version of a launch film that a platform's algorithm and a distracted viewer will actually let finish playing.",
+  ],
+};
 
-function readingTime(...text: string[]) {
-  const words = text.join(" ").trim().split(/\s+/).length;
+function readingTime(paragraphs: string[]) {
+  const words = paragraphs.join(" ").trim().split(/\s+/).length;
   return Math.max(1, Math.round(words / 200));
 }
 
@@ -65,7 +80,8 @@ export default async function BlogPostPage({
   if (!post) notFound();
 
   const more = BLOG_POSTS.filter((p) => p.slug !== post.slug).slice(0, 2);
-  const minutes = readingTime(post.excerpt, BODY_COPY);
+  const body = BODY_COPY[post.slug] ?? [post.excerpt];
+  const minutes = readingTime([post.excerpt, ...body]);
 
   return (
     <>
@@ -107,8 +123,12 @@ export default async function BlogPostPage({
                 <p className="text-white/50">{minutes} min read</p>
               </div>
             </div>
-            <p className="text-xl leading-relaxed text-white/80">{post.excerpt}</p>
-            <p className="mt-6 leading-relaxed text-white/60">{BODY_COPY}</p>
+            <p className="text-xs font-light sm:text-sm leading-relaxed text-white/80">{post.excerpt}</p>
+            {body.map((paragraph, i) => (
+              <p key={i} className="mt-6 text-xs font-light sm:text-sm leading-relaxed text-white/60">
+                {paragraph}
+              </p>
+            ))}
           </Reveal>
         </div>
       </article>
@@ -122,24 +142,25 @@ export default async function BlogPostPage({
               </span>
             </Reveal>
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
-              {more.map((p) => (
-                <Link
-                  key={p.slug}
-                  href={`/blog/${p.slug}`}
-                  className="group relative flex h-64 flex-col justify-between overflow-hidden rounded-2xl p-7 text-white"
-                  style={{ background: p.gradient }}
-                >
-                  <AbstractPattern
-                    seed={p.slug}
-                    className="opacity-70 transition-transform duration-700 ease-out group-hover:scale-110"
-                  />
-                  <span className="relative z-10 w-fit rounded-full bg-white/15 px-3 py-1 text-xs uppercase tracking-[0.15em]">
-                    {p.category}
-                  </span>
-                  <h3 className="relative z-10 font-display text-2xl font-medium transition-transform duration-500 group-hover:-translate-y-1">
-                    {p.title}
-                  </h3>
-                </Link>
+              {more.map((p, i) => (
+                <Reveal key={p.slug} delay={i * 0.08}>
+                  <Link
+                    href={`/blog/${p.slug}`}
+                    className="group relative flex h-64 flex-col justify-between overflow-hidden rounded-2xl p-7 text-white"
+                    style={{ background: p.gradient }}
+                  >
+                    <AbstractPattern
+                      seed={p.slug}
+                      className="opacity-70 transition-transform duration-700 ease-out group-hover:scale-110"
+                    />
+                    <span className="relative z-10 w-fit rounded-full bg-white/15 px-3 py-1 text-xs uppercase tracking-[0.15em]">
+                      {p.category}
+                    </span>
+                    <h3 className="relative z-10 font-display text-2xl font-medium transition-transform duration-500 group-hover:-translate-y-1">
+                      {p.title}
+                    </h3>
+                  </Link>
+                </Reveal>
               ))}
             </div>
           </div>

@@ -40,8 +40,8 @@ export default function Navbar() {
       <header
         className={`fixed inset-x-0 top-0 z-[600] border-b transition-all duration-500 ${
           solid
-            ? "border-charcoal/10 bg-base-white/90 shadow-[0_1px_0_rgba(0,0,0,0.06)] backdrop-blur-md"
-            : "border-charcoal/10 bg-transparent"
+            ? "border-white/10 bg-charcoal/90 shadow-[0_1px_0_rgba(255,255,255,0.06)] backdrop-blur-md"
+            : "border-white/10 bg-transparent"
         }`}
       >
         <div
@@ -57,7 +57,7 @@ export default function Navbar() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="group relative text-[13px] font-medium uppercase tracking-[0.12em] text-charcoal/85 transition-colors duration-300 hover:text-charcoal"
+                  className="group relative text-[13px] font-medium uppercase tracking-[0.12em] text-white/85 transition-colors duration-300 hover:text-white"
                 >
                   {link.label}
                   <span className="absolute -bottom-1.5 left-0 h-px w-0 bg-grad-blue transition-all duration-300 group-hover:w-full" />
@@ -65,12 +65,12 @@ export default function Navbar() {
               ))}
             </nav>
 
-            <span className="h-5 w-px bg-charcoal/15" />
+            <span className="h-5 w-px bg-white/15" />
 
             <MagneticButton
               href="/contact"
               strength={0.25}
-              className="inline-flex items-center rounded-full border border-charcoal/70 bg-transparent px-6 py-2.5 text-[13px] font-medium uppercase tracking-[0.1em] text-charcoal transition-colors duration-300 hover:bg-charcoal hover:text-base-white"
+              className="inline-flex items-center rounded-full border border-base-white/70 bg-transparent px-6 py-2.5 text-[13px] font-medium uppercase tracking-[0.1em] text-base-white transition-colors duration-300 hover:bg-base-white hover:text-charcoal"
             >
               Start a project
             </MagneticButton>
@@ -82,12 +82,12 @@ export default function Navbar() {
             className="relative flex h-10 w-10 flex-col items-center justify-center gap-1.5 md:hidden"
           >
             <span
-              className={`h-px w-6 bg-charcoal transition-all duration-300 ${
+              className={`h-px w-6 bg-base-white transition-all duration-300 ${
                 open ? "translate-y-[3.5px] rotate-45" : ""
               }`}
             />
             <span
-              className={`h-px w-6 bg-charcoal transition-all duration-300 ${
+              className={`h-px w-6 bg-base-white transition-all duration-300 ${
                 open ? "-translate-y-[3.5px] -rotate-45" : ""
               }`}
             />
@@ -102,7 +102,7 @@ export default function Navbar() {
             animate={{ clipPath: "circle(150% at 90% 5%)" }}
             exit={{ clipPath: "circle(0% at 90% 5%)" }}
             transition={{ duration: 0.7, ease: [0.76, 0, 0.24, 1] }}
-            className="fixed inset-0 z-[550] flex flex-col justify-center gap-3 bg-base-white px-8 sm:px-16 text-charcoal md:hidden"
+            className="fixed inset-0 z-[550] flex flex-col justify-center gap-3 bg-charcoal px-8 sm:px-16 text-base-white md:hidden"
           >
             <div className="noise-overlay opacity-[0.04]" />
             {LINKS.concat([{ label: "Contact", href: "/contact" }]).map((link, i) => (
@@ -115,7 +115,7 @@ export default function Navbar() {
                 <Link
                   href={link.href}
                   onClick={() => setOpen(false)}
-                  className="link-hover-gradient font-display text-5xl sm:text-6xl font-medium tracking-tight text-charcoal/90"
+                  className="link-hover-gradient font-display text-5xl sm:text-6xl font-medium tracking-tight text-base-white/90"
                 >
                   {link.label}
                 </Link>
@@ -127,7 +127,7 @@ export default function Navbar() {
               transition={{ delay: 0.5 }}
               className="mt-10 text-xs uppercase tracking-[0.3em] text-gray-soft"
             >
-              Available for projects — say hello
+              Available for projects, say hello
             </motion.p>
           </motion.div>
         )}

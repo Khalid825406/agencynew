@@ -15,7 +15,7 @@ export default function Portfolio() {
   const [videoId, setVideoId] = useState<string | null>(null);
 
   // Mouse-drag-to-scroll state. Touch/trackpad/mouse-wheel input is left
-  // entirely to the browser's own native scrolling — this only adds an
+  // entirely to the browser's own native scrolling; this only adds an
   // extra, purely opt-in way for mouse users to browse the cards. Normal
   // wheel scrolling over this section always scrolls the page, never the
   // cards, so it can never feel like the page "got stuck" here.
@@ -34,7 +34,7 @@ export default function Portfolio() {
 
   const onPointerDown = (e: React.PointerEvent<HTMLDivElement>) => {
     if (e.pointerType !== "mouse" || !trackRef.current) return;
-    // Deliberately not using setPointerCapture here — capturing the
+    // Deliberately not using setPointerCapture here; capturing the
     // pointer on the track retargets the browser's derived "click" event
     // to the track itself, so a plain click on a card (no drag at all)
     // never reaches the card's onClick. onPointerLeave below is the
@@ -135,7 +135,7 @@ export default function Portfolio() {
                   <span className="h-2.5 w-2.5 rounded-full bg-white/15" />
                 </div>
                 <span className="truncate rounded-full bg-white/5 px-3 py-1 text-[11px] text-white/40">
-                  nexbrave.co/work/{p.id}
+                  nexbravesolutions.in/work/{p.id}
                 </span>
               </div>
 
@@ -168,7 +168,7 @@ export default function Portfolio() {
                       {p.name}
                     </h3>
                     <div className="mt-2 flex items-end justify-between gap-3">
-                      <p className="text-sm text-white/70">{p.result}</p>
+                      <p className="text-xs font-light sm:text-sm text-white/70">{p.result}</p>
                       {!isVideo && (
                         <span className="flex shrink-0 items-center gap-1.5 text-xs uppercase tracking-[0.1em] text-white opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                           View case
@@ -211,8 +211,8 @@ export default function Portfolio() {
                 <h3 className="mt-3 font-display text-3xl sm:text-4xl font-medium">
                   {active.name}
                 </h3>
-                <p className="mt-4 text-white/70">{active.result}</p>
-                <p className="mt-2 text-sm text-white/50">{active.summary}</p>
+                <p className="mt-4 text-xs font-light sm:text-sm text-white/70">{active.result}</p>
+                <p className="mt-2 text-xs font-light sm:text-sm text-white/50">{active.summary}</p>
                 <div className="mt-8 flex items-center gap-4">
                   <Link
                     href={`/work/${active.id}`}

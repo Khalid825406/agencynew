@@ -1,25 +1,30 @@
 @import "tailwindcss";
 
 @theme inline {
-  /* Brand colors — off-white/ink monochrome with a dusty-rose accent
-     (replaces the earlier blue brand palette). Token names are kept as-is
-     so every existing text-blue-bright / bg-grad-blue / text-gradient-blue
-     / gray-soft usage across the site picks up the new palette without
-     touching each call site. */
-  --color-blue-bright: #b98673;
-  --color-blue-deep: #8a6152;
-  --color-chrome-1: #4a4844;
-  --color-chrome-2: #86837c;
-  --color-chrome-3: #17181a;
-  --color-gray-soft: #6b6862;
-  --color-base-white: #f1efea;
-  --color-base-off: #e8e5de;
-  --color-base-dark: #17181a;
-  --color-base-dark-2: #1f2023;
-  --color-charcoal: #1a1a1a;
+  /* Brand colors — matched to the NexBrave logo: bright-to-deep blue
+     gradient on the "N3" mark, chrome/silver gradient on "BRAVE", white
+     background. Token names are kept as-is so every existing
+     text-blue-bright / bg-grad-blue / text-gradient-blue / gray-soft usage
+     across the site picks up the new palette without touching each call
+     site. */
+  --color-blue-bright: #14a3ff;
+  --color-blue-deep: #0047ab;
+  --color-chrome-1: #cfd3d8;
+  --color-chrome-2: #8b9096;
+  --color-chrome-3: #3a3d42;
+  --color-gray-soft: #9aa0a8;
+  --color-base-white: #eef1f5;
+  --color-base-off: #b7bcc4;
+  --color-base-dark: #eef1f5;
+  --color-base-dark-2: #0a0d11;
+  --color-charcoal: #05070a;
 
-  --font-display: var(--font-fraunces);
-  --font-sans: var(--font-grotesk);
+  /* Inter stands in for SF Pro Display — Apple's font can't be legally
+     self-hosted for the web, and Inter is the closest embeddable match.
+     Used as both the display/heading and body font for one uniform
+     sans-serif family across the site. */
+  --font-display: var(--font-inter);
+  --font-sans: var(--font-inter);
 
   --animate-marquee: marquee 28s linear infinite;
   --animate-marquee-slow: marquee 60s linear infinite;
@@ -34,18 +39,79 @@
   }
 }
 
+@keyframes scrollbounce {
+  0% {
+    transform: translateY(-100%);
+  }
+  50% {
+    transform: translateY(0%);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
+@keyframes scrolldot {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  70% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(18px);
+    opacity: 0;
+  }
+}
+
+@keyframes blob-float {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(6%, 8%) scale(1.15);
+  }
+  66% {
+    transform: translate(-8%, 4%) scale(0.9);
+  }
+}
+
+.hero-blob {
+  animation: blob-float 16s ease-in-out infinite;
+}
+
+@keyframes spectrum-shift {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
 :root {
-  --background: var(--color-base-white);
-  --foreground: var(--color-base-dark);
-  --grad-blue: linear-gradient(135deg, #b98673 0%, #8a6152 100%);
-  --grad-chrome: linear-gradient(135deg, #4a4844 0%, #86837c 50%, #17181a 100%);
+  --background: var(--color-charcoal);
+  --foreground: var(--color-base-white);
+  --grad-blue: linear-gradient(135deg, #14a3ff 0%, #0047ab 100%);
+  --spectrum: linear-gradient(
+    90deg,
+    #8b5cf6 0%,
+    #5b5bf0 20%,
+    #2fb8d8 45%,
+    #22e05a 70%,
+    #a3e635 100%
+  );
+  --grad-chrome: linear-gradient(135deg, #cfd3d8 0%, #8b9096 50%, #3a3d42 100%);
   --grad-chrome-sweep: linear-gradient(
     115deg,
-    #17181a 0%,
-    #86837c 35%,
-    #17181a 50%,
-    #86837c 65%,
-    #17181a 100%
+    #3a3d42 0%,
+    #8b9096 35%,
+    #3a3d42 50%,
+    #8b9096 65%,
+    #3a3d42 100%
   );
 }
 
@@ -79,7 +145,7 @@ body {
 ::-webkit-scrollbar-thumb {
   background: var(--grad-blue);
   border-radius: 999px;
-  border: 2px solid var(--color-base-white);
+  border: 2px solid var(--color-charcoal);
 }
 
 .scrollbar-hide {
@@ -91,10 +157,12 @@ body {
 }
 
 .text-gradient-blue {
-  background: var(--grad-blue);
+  background: var(--spectrum);
+  background-size: 400% auto;
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+  animation: spectrum-shift 6s ease-in-out infinite;
 }
 
 .text-gradient-chrome {
@@ -108,14 +176,22 @@ body {
   transition: color 0.3s ease;
 }
 .link-hover-gradient:hover {
-  background: var(--grad-blue);
+  background: var(--spectrum);
+  background-size: 400% auto;
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+  animation: spectrum-shift 6s ease-in-out infinite;
 }
 
 .bg-grad-blue {
   background: var(--grad-blue);
+}
+
+.bg-spectrum-animated {
+  background: var(--spectrum);
+  background-size: 400% auto;
+  animation: spectrum-shift 6s ease-in-out infinite;
 }
 
 .bg-grad-chrome {

@@ -8,18 +8,18 @@ import JourneyIcon from "@/components/graphics/JourneyIcon";
 
 const STEPS = [
   { n: "01", icon: "discover", name: "Discover", copy: "We dig into your market, users and goals before touching a single pixel." },
-  { n: "02", icon: "design", name: "Design", copy: "Concepts that feel distinct — grounded in your brand, tested with real users." },
+  { n: "02", icon: "design", name: "Design", copy: "Concepts that feel distinct, grounded in your brand, tested with real users." },
   { n: "03", icon: "develop", name: "Develop", copy: "Clean, fast, maintainable builds across web, app and everything between." },
-  { n: "04", icon: "deploy", name: "Deploy", copy: "Shipped with monitoring, QA and a rollout plan — not a Friday-night gamble." },
+  { n: "04", icon: "deploy", name: "Deploy", copy: "Shipped with monitoring, QA and a rollout plan, not a Friday-night gamble." },
   { n: "05", icon: "grow", name: "Grow", copy: "Data-driven iteration: SEO, marketing and product feedback loops, ongoing." },
 ];
 
 // Steps reveal one at a time as scroll continues (rather than all together),
-// each getting its own slice of the [0.36, 0.93] scroll range. The
+// each getting its own slice of the [0.5, 0.95] scroll range. The
 // connecting line to the NEXT step draws in right after the current one
 // lands.
-const STEPS_START = 0.36;
-const STEPS_END = 0.93;
+const STEPS_START = 0.5;
+const STEPS_END = 0.95;
 
 function StepItem({
   step,
@@ -57,7 +57,7 @@ function StepItem({
         <JourneyIcon slug={step.icon} className="h-5 w-5" />
       </div>
       <p className="mt-4 font-display text-lg font-medium">{step.name}</p>
-      <p className="mt-1.5 max-w-[160px] text-xs leading-relaxed text-white/45">{step.copy}</p>
+      <p className="mt-1.5 max-w-[160px] text-xs font-light leading-relaxed text-white/45">{step.copy}</p>
     </motion.div>
   );
 }
@@ -69,23 +69,29 @@ function ConvergingHands() {
     offset: ["start start", "end end"],
   });
 
-  // Hands start moving the instant the section is entered (no dead scroll
-  // space first) and arrive at center well before the halfway point, so the
-  // "coming in from the sides" motion is immediately visible rather than
-  // spread thin across a huge stretch of scroll. These fractions are smaller
-  // than they look — the section itself is now taller (see h-[Xvh] below) so
-  // the *absolute* scroll distance for the hands' entrance is unchanged from
-  // before; only the steps below get the section's extra height.
-  const leftX = useTransform(scrollYProgress, [0, 0.24], ["-60vw", "0vw"]);
-  const rightX = useTransform(scrollYProgress, [0, 0.24], ["60vw", "0vw"]);
-  const handsOpacity = useTransform(scrollYProgress, [0, 0.03], [0, 1]);
+  // Hands drift in from the sides over a much longer scroll stretch, with an
+  // ease-out curve (lots of keyframes, front-loaded spacing) so the motion
+  // reads as a smooth glide that decelerates into place rather than a quick,
+  // linear snap. Opacity fades in over the same longer window so they don't
+  // just pop into view either.
+  const leftX = useTransform(
+    scrollYProgress,
+    [0, 0.1, 0.2, 0.3, 0.42],
+    ["-60vw", "-32vw", "-14vw", "-4vw", "0vw"]
+  );
+  const rightX = useTransform(
+    scrollYProgress,
+    [0, 0.1, 0.2, 0.3, 0.42],
+    ["60vw", "32vw", "14vw", "4vw", "0vw"]
+  );
+  const handsOpacity = useTransform(scrollYProgress, [0, 0.12], [0, 1]);
   // Kept small and additive (mix-blend-screen) so the glow reads as a spark
   // at the fingertips rather than an opaque wash that dulls/"blurs" the hands.
-  const burstScale = useTransform(scrollYProgress, [0.21, 0.3], [0.3, 1.4]);
-  const burstOpacity = useTransform(scrollYProgress, [0.2, 0.24, 0.35], [0, 0.85, 0]);
+  const burstScale = useTransform(scrollYProgress, [0.39, 0.48], [0.3, 1.4]);
+  const burstOpacity = useTransform(scrollYProgress, [0.38, 0.42, 0.53], [0, 0.85, 0]);
 
   // Once a step (or its connector line) has been scrolled into view, it should
-  // stay visible even if the user scrolls back up — only the hands themselves
+  // stay visible even if the user scrolls back up; only the hands themselves
   // stay fully scroll-scrubbed both ways. This tracks the highest progress
   // value ever seen and holds the steps' input at that value.
   const maxStepsProgress = useRef(0);
@@ -106,17 +112,11 @@ function ConvergingHands() {
             How we work
           </span>
           <h2 className="font-display text-4xl font-medium tracking-tight sm:text-6xl">
-            Human craft. <span className="text-gradient-blue">AI speed.</span>
+            Human Craft. <span className="text-gradient-blue">AI speed.</span>
           </h2>
         </div>
 
         <div className="relative mt-8 h-[46vw] max-h-[520px] w-full sm:mt-12">
-          {/* Both source photos are dark-toned on a white backdrop, so
-              against this section's near-black background they'd otherwise
-              vanish — this spotlight + per-hand glow gives them a lit
-              backdrop and a strong rim-light to read clearly as silhouettes. */}
-          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_60%_70%_at_50%_35%,rgba(255,255,255,0.22),transparent_72%)]" />
-
           <motion.div
             style={{ opacity: handsOpacity, x: leftX, willChange: "transform, opacity" }}
             className="absolute right-1/2 top-[2%] w-[54vw] max-w-[420px] sm:max-w-[980px]"
@@ -188,7 +188,6 @@ function StaticJourney() {
         </h2>
 
         <div className="relative mx-auto mt-12 h-[42vw] max-h-[400px] w-full max-w-[1200px] sm:mt-16">
-          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_60%_70%_at_50%_35%,rgba(255,255,255,0.22),transparent_72%)]" />
           <div className="absolute right-1/2 top-[2%] w-[50vw] max-w-[340px] sm:max-w-[600px]">
             <Image
               src="/hand_left.png"
@@ -220,7 +219,7 @@ function StaticJourney() {
                 <JourneyIcon slug={step.icon} className="h-5 w-5" />
               </div>
               <p className="mt-4 font-display text-lg font-medium">{step.name}</p>
-              <p className="mt-1.5 max-w-[160px] text-xs leading-relaxed text-white/45">
+              <p className="mt-1.5 max-w-[160px] text-xs font-light leading-relaxed text-white/45">
                 {step.copy}
               </p>
             </div>

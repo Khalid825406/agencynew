@@ -48,10 +48,10 @@ export default function ServicesNav() {
               <a
                 href={`#${s.slug}`}
                 onClick={jumpTo(s.slug)}
-                className={`-ml-px flex items-center gap-3 border-l px-4 py-2.5 text-sm transition-colors duration-300 ${
+                className={`-ml-px flex items-center gap-3 border-l px-4 py-2.5 text-sm transition-all duration-300 ${
                   active === s.slug
-                    ? "border-blue-bright font-medium text-white"
-                    : "border-transparent text-white/40 hover:text-white/70"
+                    ? "border-blue-bright font-medium text-white translate-x-1"
+                    : "border-transparent text-white/40 hover:translate-x-1 hover:text-white/70"
                 }`}
               >
                 <span className="font-mono text-xs">{s.n}</span>
@@ -69,10 +69,10 @@ export default function ServicesNav() {
             key={s.slug}
             href={`#${s.slug}`}
             onClick={jumpTo(s.slug)}
-            className={`shrink-0 rounded-full border px-4 py-2 text-xs font-medium uppercase tracking-[0.08em] transition-colors duration-300 ${
+            className={`shrink-0 rounded-full border px-4 py-2 text-xs font-medium uppercase tracking-[0.08em] transition-all duration-300 ${
               active === s.slug
-                ? "border-white bg-white text-charcoal"
-                : "border-white/15 text-white/60"
+                ? "border-transparent bg-grad-blue text-base-white scale-105"
+                : "border-white/15 text-white/60 hover:scale-105"
             }`}
           >
             {s.name}
