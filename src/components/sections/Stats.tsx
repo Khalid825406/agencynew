@@ -56,10 +56,10 @@ export default function Stats() {
   return (
     <section ref={sectionRef} className="relative bg-[#0A0E14] py-24 text-white sm:py-32">
       <div className="mx-auto max-w-[1400px] px-6 sm:px-10">
-        <div className="grid grid-cols-2 gap-y-14 gap-x-6 sm:grid-cols-4 sm:gap-x-10">
+        <div className="grid grid-cols-2 gap-y-14 gap-x-6 sm:grid-cols-4 sm:gap-x-6 lg:gap-x-10">
           {STATS.map((stat, i) => (
             <Reveal key={stat.label} delay={i * 0.08} className="border-l border-white/10 pl-5 sm:pl-6">
-              <div className="font-display text-5xl sm:text-6xl font-medium tracking-tight text-gradient-blue">
+              <div className="font-display text-4xl sm:text-5xl lg:text-6xl font-medium tracking-tight text-gradient-blue">
                 <Counter value={stat.value} suffix={stat.suffix} trigger={inView} />
               </div>
               <p className="mt-3 text-sm uppercase tracking-[0.1em] text-white/50">

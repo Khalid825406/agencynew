@@ -8,6 +8,7 @@ import ServiceIcon from "@/components/graphics/ServiceIcon";
 import AbstractPattern from "@/components/graphics/AbstractPattern";
 import Reveal from "@/components/Reveal";
 import { SERVICES, PROJECTS } from "@/lib/data";
+import { SITE_NAME, SITE_OG_IMAGE, SITE_URL } from "@/lib/seo";
 
 const TITLE = "Services | NexBrave Solutions";
 const DESCRIPTION =
@@ -17,13 +18,33 @@ export const metadata: Metadata = {
   title: TITLE,
   description: DESCRIPTION,
   alternates: { canonical: "/services" },
-  openGraph: { title: TITLE, description: DESCRIPTION, url: "/services" },
-  twitter: { title: TITLE, description: DESCRIPTION },
+  openGraph: { title: TITLE, description: DESCRIPTION, url: "/services", images: [SITE_OG_IMAGE] },
+  twitter: { title: TITLE, description: DESCRIPTION, images: [SITE_OG_IMAGE.url] },
+};
+
+const servicesJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  itemListElement: SERVICES.map((s, i) => ({
+    "@type": "ListItem",
+    position: i + 1,
+    item: {
+      "@type": "Service",
+      name: s.name,
+      description: s.long,
+      provider: { "@type": "Organization", name: SITE_NAME, url: SITE_URL },
+      url: `${SITE_URL}/services#${s.slug}`,
+    },
+  })),
 };
 
 export default function ServicesPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(servicesJsonLd) }}
+      />
       <PageHero
         eyebrow="What we do"
         title="Five disciplines. One team."

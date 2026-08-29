@@ -5,6 +5,7 @@ import CTAContact from "@/components/sections/CTAContact";
 import AbstractPattern from "@/components/graphics/AbstractPattern";
 import Reveal from "@/components/Reveal";
 import { BLOG_POSTS } from "@/lib/data";
+import { SITE_OG_IMAGE } from "@/lib/seo";
 
 const TITLE = "Insights | NexBrave Solutions";
 const DESCRIPTION = "Notes on design, SEO and motion from the NexBrave team.";
@@ -13,8 +14,8 @@ export const metadata: Metadata = {
   title: TITLE,
   description: DESCRIPTION,
   alternates: { canonical: "/blog" },
-  openGraph: { title: TITLE, description: DESCRIPTION, url: "/blog" },
-  twitter: { title: TITLE, description: DESCRIPTION },
+  openGraph: { title: TITLE, description: DESCRIPTION, url: "/blog", images: [SITE_OG_IMAGE] },
+  twitter: { title: TITLE, description: DESCRIPTION, images: [SITE_OG_IMAGE.url] },
 };
 
 function formatDate(date: string) {

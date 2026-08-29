@@ -6,6 +6,7 @@ import NoiseOverlay from "@/components/NoiseOverlay";
 import AbstractPattern from "@/components/graphics/AbstractPattern";
 import Reveal from "@/components/Reveal";
 import { PROJECTS } from "@/lib/data";
+import { SITE_OG_IMAGE, SITE_URL } from "@/lib/seo";
 
 export function generateStaticParams() {
   return PROJECTS.map((p) => ({ slug: p.id }));
@@ -25,8 +26,8 @@ export async function generateMetadata({
     title,
     description,
     alternates: { canonical: `/work/${slug}` },
-    openGraph: { title, description, url: `/work/${slug}`, type: "article" },
-    twitter: { title, description },
+    openGraph: { title, description, url: `/work/${slug}`, type: "article", images: [SITE_OG_IMAGE] },
+    twitter: { title, description, images: [SITE_OG_IMAGE.url] },
   };
 }
 
@@ -44,8 +45,22 @@ export default async function CaseStudyPage({
   const rest = others.filter((p) => p.service !== project.service);
   const more = [...sameService, ...rest].slice(0, 3);
 
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
+      { "@type": "ListItem", position: 2, name: "Work", item: `${SITE_URL}/work` },
+      { "@type": "ListItem", position: 3, name: project.name, item: `${SITE_URL}/work/${project.id}` },
+    ],
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       <section
         className="relative flex min-h-[70vh] flex-col justify-end overflow-hidden pb-16 pt-40 text-white"
         style={{ background: project.gradient }}

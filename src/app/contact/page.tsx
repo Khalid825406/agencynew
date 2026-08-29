@@ -3,6 +3,7 @@ import PageHero from "@/components/PageHero";
 import ProjectBrief from "@/components/sections/ProjectBrief";
 import ContactIcon from "@/components/graphics/ContactIcon";
 import Reveal from "@/components/Reveal";
+import { SITE_OG_IMAGE } from "@/lib/seo";
 
 const TITLE = "Contact | NexBrave Solutions";
 const DESCRIPTION = "Tell us about your project. We reply within one business day.";
@@ -11,8 +12,8 @@ export const metadata: Metadata = {
   title: TITLE,
   description: DESCRIPTION,
   alternates: { canonical: "/contact" },
-  openGraph: { title: TITLE, description: DESCRIPTION, url: "/contact" },
-  twitter: { title: TITLE, description: DESCRIPTION },
+  openGraph: { title: TITLE, description: DESCRIPTION, url: "/contact", images: [SITE_OG_IMAGE] },
+  twitter: { title: TITLE, description: DESCRIPTION, images: [SITE_OG_IMAGE.url] },
 };
 
 const INFO = [

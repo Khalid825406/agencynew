@@ -1,5 +1,5 @@
 import { ImageResponse } from "next/og";
-import { SITE_NAME } from "@/lib/seo";
+import { SITE_URL } from "@/lib/seo";
 
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
@@ -15,36 +15,52 @@ export default function OpengraphImage() {
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          background: "#0A0E14",
+          background: "#05070a",
           fontFamily: "sans-serif",
+          position: "relative",
         }}
       >
         <div
           style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            width: 96,
-            height: 96,
-            borderRadius: 22,
-            background: "linear-gradient(135deg, #00AEEF 0%, #0033A0 100%)",
-            color: "#fff",
-            fontSize: 42,
-            fontWeight: 700,
-            marginBottom: 40,
+            position: "absolute",
+            top: -120,
+            right: -120,
+            width: 560,
+            height: 560,
+            borderRadius: "50%",
+            background: "#0047ab",
+            opacity: 0.45,
+            filter: "blur(2px)",
           }}
-        >
-          NB
-        </div>
-        <div style={{ display: "flex", color: "#fff", fontSize: 64, fontWeight: 600, letterSpacing: -1 }}>
-          {SITE_NAME}
-        </div>
+        />
+        <div
+          style={{
+            position: "absolute",
+            bottom: -140,
+            left: -140,
+            width: 520,
+            height: 520,
+            borderRadius: "50%",
+            background: "#14a3ff",
+            opacity: 0.3,
+            filter: "blur(2px)",
+          }}
+        />
+
+        {/* eslint-disable-next-line @next/next/no-img-element -- ImageResponse (Satori) requires a plain <img>, not next/image */}
+        <img
+          src={`${SITE_URL}/nexbravelogobackbg.png`}
+          width={620}
+          height={620 * (260 / 959)}
+          alt=""
+          style={{ marginBottom: 44 }}
+        />
+
         <div
           style={{
             display: "flex",
-            color: "rgba(255,255,255,0.5)",
+            color: "rgba(255,255,255,0.55)",
             fontSize: 28,
-            marginTop: 18,
             letterSpacing: 2,
             textTransform: "uppercase",
           }}

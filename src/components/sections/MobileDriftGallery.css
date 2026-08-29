@@ -1,0 +1,68 @@
+.drift-gallery-wrapper {
+  touch-action: none;
+}
+
+.drift-gallery-item-wrapper {
+  position: absolute;
+  will-change: transform, left, top;
+  transition: box-shadow 0.2s;
+}
+
+.drift-gallery-item-wrapper.focused {
+  z-index: 10;
+  box-shadow:
+    0 0 0 2px white,
+    0 0 0 4px #0a0a0a;
+}
+
+.drift-gallery-item-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: #171717;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.drift-gallery-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  will-change: transform;
+  user-select: none;
+  pointer-events: none;
+}
+
+.drift-gallery-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s;
+  pointer-events: none;
+}
+
+.drift-gallery-spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 24px;
+  height: 24px;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-left-color: white;
+  border-radius: 50%;
+  animation: drift-gallery-spin 1s linear infinite;
+}
+
+@keyframes drift-gallery-spin {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}

@@ -64,13 +64,13 @@ export default function Hero() {
             <KineticText
               as="span"
               text="We build brands"
-              className="block text-[11vw] font-semibold capitalize text-white sm:text-[42px] md:text-[50px]"
+              className="block text-[8vw] font-semibold capitalize text-white sm:text-[34px] md:text-[50px]"
             />
             <KineticText
               as="span"
               text="that move"
               gradientWords={["that", "move"]}
-              className="block text-[16vw] font-extrabold uppercase sm:text-[70px] md:text-[90px]"
+              className="block text-[12vw] font-extrabold uppercase sm:text-[56px] md:text-[90px]"
             />
           </h1>
 

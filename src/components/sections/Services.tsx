@@ -61,7 +61,7 @@ export default function Services() {
                   background:
                     "radial-gradient(38% 35% at 88% 4%, rgba(40,120,235,0.55), transparent 100%), radial-gradient(34% 32% at 6% 96%, rgba(20,163,255,0.4), transparent 100%), #05070a",
                 }}
-                className="relative grid grid-cols-1 gap-8 overflow-hidden rounded-[2rem] border border-white/15 p-6 shadow-[0_40px_100px_rgba(0,0,0,0.65)] sm:p-10 lg:grid-cols-2 lg:items-center lg:gap-14 lg:p-14"
+                className="relative grid grid-cols-1 gap-5 overflow-hidden rounded-[1.5rem] border border-white/15 p-5 shadow-[0_40px_100px_rgba(0,0,0,0.65)] sm:gap-8 sm:rounded-[2rem] sm:p-10 lg:grid-cols-2 lg:items-center lg:gap-14 lg:p-14"
               >
                   <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl border border-white/10">
                     <Image
@@ -75,23 +75,25 @@ export default function Services() {
                   </div>
 
                   <div className="relative">
-                    <span className="flex h-11 w-11 items-center justify-center rounded-full border border-blue-bright/30 bg-blue-bright/10 backdrop-blur-sm">
-                      <ServiceIcon slug={s.slug} className="h-5 w-5 text-blue-bright" />
-                    </span>
-                    <span className="mt-6 flex items-baseline gap-1 font-mono">
-                      <span className="text-gradient-blue text-3xl font-bold">{s.n}</span>
-                      <span className="text-sm text-white/50">/ 05</span>
-                    </span>
-                    <h3 className="mt-2 font-display text-3xl font-medium tracking-tight text-white sm:text-4xl">
+                    <div className="flex items-center justify-between sm:block">
+                      <span className="flex h-9 w-9 items-center justify-center rounded-full border border-blue-bright/30 bg-blue-bright/10 backdrop-blur-sm sm:h-11 sm:w-11">
+                        <ServiceIcon slug={s.slug} className="h-4 w-4 text-blue-bright sm:h-5 sm:w-5" />
+                      </span>
+                      <span className="flex items-baseline gap-1 font-mono sm:mt-6">
+                        <span className="text-gradient-blue text-2xl font-bold sm:text-3xl">{s.n}</span>
+                        <span className="text-xs text-white/50 sm:text-sm">/ 05</span>
+                      </span>
+                    </div>
+                    <h3 className="mt-1.5 font-display text-2xl font-medium tracking-tight text-white sm:mt-2 sm:text-3xl lg:text-4xl">
                       {s.name}
                     </h3>
-                    <p className="mt-3 max-w-md text-xs font-light sm:text-sm text-white/70">{s.long}</p>
+                    <p className="mt-2 max-w-md text-xs font-light text-white/70 sm:mt-3 sm:text-sm">{s.long}</p>
 
-                    <div className="mt-6 flex flex-wrap gap-2">
+                    <div className="mt-4 flex flex-wrap gap-1.5 sm:mt-6 sm:gap-2">
                       {s.tags.map((tag) => (
                         <span
                           key={tag}
-                          className="rounded-full border border-blue-bright/25 bg-blue-bright/10 px-3 py-1 text-xs text-blue-bright backdrop-blur-sm"
+                          className="rounded-full border border-blue-bright/25 bg-blue-bright/10 px-2.5 py-0.5 text-[10px] text-blue-bright backdrop-blur-sm sm:px-3 sm:py-1 sm:text-xs"
                         >
                           {tag}
                         </span>
@@ -100,7 +102,7 @@ export default function Services() {
 
                     <Link
                       href={`/services#${s.slug}`}
-                      className="mt-8 inline-flex items-center gap-2 rounded-full bg-grad-blue px-6 py-3 text-sm font-medium uppercase tracking-[0.1em] text-white shadow-[0_10px_30px_rgba(20,163,255,0.35)] transition-transform duration-300 hover:scale-105"
+                      className="mt-5 inline-flex items-center gap-2 rounded-full bg-grad-blue px-5 py-2.5 text-xs font-medium uppercase tracking-[0.1em] text-white shadow-[0_10px_30px_rgba(20,163,255,0.35)] transition-transform duration-300 hover:scale-105 sm:mt-8 sm:px-6 sm:py-3 sm:text-sm"
                     >
                       Explore service <span aria-hidden="true">→</span>
                     </Link>

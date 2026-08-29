@@ -1,10 +1,10 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import SmoothScroll from "@/components/providers/SmoothScroll";
 import Navbar from "@/components/nav/Navbar";
 import Footer from "@/components/sections/Footer";
-import { SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/seo";
+import { SITE_DESCRIPTION, SITE_NAME, SITE_OG_IMAGE, SITE_URL } from "@/lib/seo";
 
 // SF Pro Display itself can't be self-hosted for the web (Apple's license
 // restricts it to Apple platforms/software) — Inter is the closest legally
@@ -17,6 +17,13 @@ const inter = Inter({
 });
 
 const TITLE = "NexBrave Solutions: Digital Agency";
+
+export const viewport: Viewport = {
+  themeColor: "#05070a",
+  colorScheme: "dark",
+  width: "device-width",
+  initialScale: 1,
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -58,11 +65,13 @@ export const metadata: Metadata = {
     siteName: SITE_NAME,
     title: TITLE,
     description: SITE_DESCRIPTION,
+    images: [SITE_OG_IMAGE],
   },
   twitter: {
     card: "summary_large_image",
     title: TITLE,
     description: SITE_DESCRIPTION,
+    images: [SITE_OG_IMAGE.url],
   },
 };
 
@@ -91,6 +100,13 @@ const organizationJsonLd = {
   ],
 };
 
+const websiteJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: SITE_NAME,
+  url: SITE_URL,
+};
+
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
@@ -102,6 +118,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
         />
         <SmoothScroll>
           <Navbar />

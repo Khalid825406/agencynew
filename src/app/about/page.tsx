@@ -7,6 +7,7 @@ import ValueIcon from "@/components/graphics/ValueIcon";
 import AbstractPattern from "@/components/graphics/AbstractPattern";
 import Reveal from "@/components/Reveal";
 import { TEAM } from "@/lib/data";
+import { SITE_OG_IMAGE } from "@/lib/seo";
 
 const TITLE = "About | NexBrave Solutions";
 const DESCRIPTION = "The team behind NexBrave Solutions and how we work.";
@@ -15,8 +16,8 @@ export const metadata: Metadata = {
   title: TITLE,
   description: DESCRIPTION,
   alternates: { canonical: "/about" },
-  openGraph: { title: TITLE, description: DESCRIPTION, url: "/about" },
-  twitter: { title: TITLE, description: DESCRIPTION },
+  openGraph: { title: TITLE, description: DESCRIPTION, url: "/about", images: [SITE_OG_IMAGE] },
+  twitter: { title: TITLE, description: DESCRIPTION, images: [SITE_OG_IMAGE.url] },
 };
 
 const VALUES = [

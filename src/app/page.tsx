@@ -2,7 +2,7 @@ import Hero from "@/components/sections/Hero";
 import Marquee from "@/components/sections/Marquee";
 import Services from "@/components/sections/Services";
 import Portfolio from "@/components/sections/Portfolio";
-import ClaySphereGallery from "@/components/sections/ClaySphereGallery";
+import ResponsiveGallery from "@/components/sections/ResponsiveGallery";
 import Journey from "@/components/sections/Journey";
 import Stats from "@/components/sections/Stats";
 import Testimonials from "@/components/sections/Testimonials";
@@ -15,7 +15,7 @@ export default function Home() {
       <Marquee />
       <Services />
       <Portfolio />
-      <ClaySphereGallery />
+      <ResponsiveGallery />
       <Journey />
       <Stats />
       <Testimonials />

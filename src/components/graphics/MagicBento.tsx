@@ -559,9 +559,9 @@ const MagicBento: React.FC<BentoProps> = ({
                     </div>
                   )}
                   <div className="card__content relative z-10 flex shrink-0 flex-col gap-2 p-5">
-                    <div className="flex items-start justify-between gap-3">
+                    <div className="flex flex-col items-start gap-2 sm:flex-row sm:items-center sm:justify-between">
                       <h3
-                        className={`card__title font-display text-lg font-medium tracking-tight text-white m-0 ${textAutoHide ? "text-clamp-1" : ""}`}
+                        className={`card__title min-w-0 flex-1 font-display text-lg font-medium tracking-tight text-white m-0 ${textAutoHide ? "text-clamp-1" : ""}`}
                       >
                         {card.title}
                       </h3>

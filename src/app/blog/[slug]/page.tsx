@@ -6,6 +6,7 @@ import CTAContact from "@/components/sections/CTAContact";
 import AbstractPattern from "@/components/graphics/AbstractPattern";
 import Reveal from "@/components/Reveal";
 import { BLOG_POSTS } from "@/lib/data";
+import { SITE_NAME, SITE_OG_IMAGE, SITE_URL } from "@/lib/seo";
 
 export function generateStaticParams() {
   return BLOG_POSTS.map((p) => ({ slug: p.slug }));
@@ -31,8 +32,9 @@ export async function generateMetadata({
       url: `/blog/${slug}`,
       type: "article",
       publishedTime: post?.date,
+      images: [SITE_OG_IMAGE],
     },
-    twitter: { title, description },
+    twitter: { title, description, images: [SITE_OG_IMAGE.url] },
   };
 }
 
@@ -83,8 +85,44 @@ export default async function BlogPostPage({
   const body = BODY_COPY[post.slug] ?? [post.excerpt];
   const minutes = readingTime([post.excerpt, ...body]);
 
+  const articleJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: post.title,
+    description: post.excerpt,
+    datePublished: post.date,
+    dateModified: post.date,
+    articleSection: post.category,
+    image: `${SITE_URL}/opengraph-image`,
+    author: { "@type": "Organization", name: SITE_NAME, url: SITE_URL },
+    publisher: {
+      "@type": "Organization",
+      name: SITE_NAME,
+      logo: { "@type": "ImageObject", url: `${SITE_URL}/nexbravelogobackbg.png` },
+    },
+    mainEntityOfPage: { "@type": "WebPage", "@id": `${SITE_URL}/blog/${post.slug}` },
+  };
+
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
+      { "@type": "ListItem", position: 2, name: "Blog", item: `${SITE_URL}/blog` },
+      { "@type": "ListItem", position: 3, name: post.title, item: `${SITE_URL}/blog/${post.slug}` },
+    ],
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
       <section
         className="relative flex min-h-[55vh] flex-col justify-end overflow-hidden pb-14 pt-40 text-white"
         style={{ background: post.gradient }}

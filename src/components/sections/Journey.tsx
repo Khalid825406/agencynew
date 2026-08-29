@@ -53,11 +53,11 @@ function StepItem({
           className="absolute left-[calc(50%+28px)] top-6 hidden h-px w-[calc(100%-56px)] origin-left bg-white/10 sm:block"
         />
       )}
-      <div className="relative z-10 flex h-12 w-12 items-center justify-center rounded-full border border-white/15 bg-white/[0.04] text-blue-bright">
-        <JourneyIcon slug={step.icon} className="h-5 w-5" />
+      <div className="relative z-10 flex h-9 w-9 items-center justify-center rounded-full border border-white/15 bg-white/[0.04] text-blue-bright sm:h-12 sm:w-12">
+        <JourneyIcon slug={step.icon} className="h-4 w-4 sm:h-5 sm:w-5" />
       </div>
-      <p className="mt-4 font-display text-lg font-medium">{step.name}</p>
-      <p className="mt-1.5 max-w-[160px] text-xs font-light leading-relaxed text-white/45">{step.copy}</p>
+      <p className="mt-2 font-display text-sm font-medium sm:mt-4 sm:text-lg">{step.name}</p>
+      <p className="mt-1 max-w-[160px] text-[11px] font-light leading-relaxed text-white/45 sm:mt-1.5 sm:text-xs">{step.copy}</p>
     </motion.div>
   );
 }
@@ -102,21 +102,21 @@ function ConvergingHands() {
 
   return (
     <div ref={sectionRef} className="relative h-[170vh] sm:h-[160vh]">
-      <div className="sticky top-0 flex h-screen flex-col items-center justify-center overflow-hidden bg-[#0A0E14] px-[20px] pb-[20px] pt-24 text-white sm:pt-28">
+      <div className="sticky top-0 flex h-screen flex-col items-center justify-center overflow-hidden bg-[#0A0E14] px-[20px] pb-[20px] pt-16 text-white sm:pt-28">
         <NoiseOverlay />
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_45%,rgba(0,174,239,0.08),transparent_60%)]" />
 
         <div className="relative z-10 mx-auto max-w-[1400px] px-6 text-center sm:px-10">
-          <span className="mb-6 flex items-center justify-center gap-2 text-xs uppercase tracking-[0.35em] text-gray-soft">
+          <span className="mb-3 flex items-center justify-center gap-2 text-xs uppercase tracking-[0.35em] text-gray-soft sm:mb-6">
             <span className="h-1.5 w-1.5 rounded-full bg-grad-blue" />
             How we work
           </span>
-          <h2 className="font-display text-4xl font-medium tracking-tight sm:text-6xl">
+          <h2 className="font-display text-2xl font-medium tracking-tight sm:text-4xl lg:text-6xl">
             Human Craft. <span className="text-gradient-blue">AI speed.</span>
           </h2>
         </div>
 
-        <div className="relative mt-8 h-[46vw] max-h-[520px] w-full sm:mt-12">
+        <div className="relative mt-4 h-[30vw] max-h-[220px] w-full sm:mt-12 sm:h-[46vw] sm:max-h-[520px]">
           <motion.div
             style={{ opacity: handsOpacity, x: leftX, willChange: "transform, opacity" }}
             className="absolute right-1/2 top-[2%] w-[54vw] max-w-[420px] sm:max-w-[980px]"
@@ -155,8 +155,8 @@ function ConvergingHands() {
           />
         </div>
 
-        <div className="relative z-10 mt-4 w-full max-w-[1200px] px-6 sm:mt-20 sm:px-10">
-          <div className="grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-5 sm:gap-8">
+        <div className="relative z-10 mt-3 w-full max-w-[1200px] px-6 sm:mt-20 sm:px-10">
+          <div className="grid grid-cols-2 gap-x-4 gap-y-5 sm:grid-cols-5 sm:gap-8">
             {STEPS.map((step, i) => (
               <StepItem
                 key={step.n}
