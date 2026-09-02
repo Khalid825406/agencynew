@@ -7,6 +7,7 @@ import ValueIcon from "@/components/graphics/ValueIcon";
 import AbstractPattern from "@/components/graphics/AbstractPattern";
 import Reveal from "@/components/Reveal";
 import { TEAM } from "@/lib/data";
+import TeamSlider from "@/components/sections/TeamSlider";
 import { SITE_OG_IMAGE } from "@/lib/seo";
 
 const TITLE = "About | NexBrave Solutions";
@@ -153,27 +154,8 @@ export default function AboutPage() {
             </p>
           </Reveal>
 
-          <div className="mt-14 grid grid-cols-2 gap-8 border-t border-white/10 pt-14 sm:grid-cols-4">
-            {TEAM.map((member, i) => (
-              <Reveal key={member.name} delay={i * 0.06} className="group">
-                <div className="relative aspect-[4/5] overflow-hidden rounded-2xl bg-white/5 shadow-[0_0_0_rgba(10,14,20,0)] transition-shadow duration-500 group-hover:shadow-[0_20px_40px_rgba(0,0,0,0.4)]">
-                  <span className="absolute left-3 top-3 z-10 rounded-full bg-black/40 px-2 py-1 font-mono text-xs text-white/80 backdrop-blur-sm">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                  <Image
-                    src={member.image}
-                    alt={member.name}
-                    fill
-                    sizes="(min-width: 1024px) 20vw, (min-width: 640px) 33vw, 50vw"
-                    className="object-cover object-top grayscale transition-all duration-500 group-hover:scale-105 group-hover:grayscale-0"
-                  />
-                </div>
-                <p className="mt-4 font-display text-xl font-medium">{member.name}</p>
-                <span className="mt-1.5 inline-block rounded-full border border-white/15 px-2.5 py-1 text-xs text-white/60">
-                  {member.role}
-                </span>
-              </Reveal>
-            ))}
+          <div className="mt-14 border-t border-white/10 pt-14">
+            <TeamSlider />
           </div>
         </div>
       </section>

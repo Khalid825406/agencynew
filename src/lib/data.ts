@@ -247,6 +247,7 @@ export const TEAM = [
   { name: "Abujar", role: "Video Editor", image: "/abujar.jpeg" },
   { name: "Adnan", role: "Digital Marketing Lead", image: "/adnan.jpeg" },
   { name: "Khalid", role: "Developer", image: "/khalid.jpeg" },
+  { name: "Shabbir", role: "Video Editor", image: "/shabbir.jpeg" },
 ] as const;
 
 export const BLOG_POSTS = [
@@ -258,6 +259,7 @@ export const BLOG_POSTS = [
     category: "Design",
     date: "2026-06-02",
     gradient: "linear-gradient(135deg,#00AEEF,#0033A0)",
+    image: "/blog1.png",
   },
   {
     slug: "seo-in-the-age-of-ai-search",
@@ -267,6 +269,7 @@ export const BLOG_POSTS = [
     category: "SEO",
     date: "2026-05-14",
     gradient: "linear-gradient(135deg,#808080,#1A1D23)",
+    image: "/blog2.png",
   },
   {
     slug: "the-30-second-rule-for-launch-films",
@@ -276,5 +279,6 @@ export const BLOG_POSTS = [
     category: "Video",
     date: "2026-04-22",
     gradient: "linear-gradient(135deg,#0033A0,#00AEEF)",
+    image: "/blog3.png",
   },
 ] as const;

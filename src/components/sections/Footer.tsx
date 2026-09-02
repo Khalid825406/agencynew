@@ -18,7 +18,7 @@ const SITEMAP = [
 const SOCIALS = [
   {
     label: "Instagram",
-    href: "https://www.instagram.com/brave_solution/",
+    href: "https://www.instagram.com/nexbravesolutions",
     icon: "instagram",
   },
   {
@@ -92,11 +92,11 @@ export default function Footer() {
               bravesolution43@gmail.com
             </a>
             <a
-              href="tel:+918002356170"
+              href="tel:+919229738040"
               className="group mt-3 flex items-center gap-2.5 text-sm text-white/60 transition-colors hover:text-white"
             >
               <ContactIcon slug="phone" className="h-3.5 w-3.5 shrink-0 text-blue-bright" />
-              +91 80023 56170
+              +91 92297 38040
             </a>
             <p className="mt-4 max-w-[220px] text-xs font-light leading-relaxed sm:text-sm text-white/50">
               We reply within one business day, usually faster.

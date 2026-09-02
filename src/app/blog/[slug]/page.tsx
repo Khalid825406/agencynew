@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import NoiseOverlay from "@/components/NoiseOverlay";
 import CTAContact from "@/components/sections/CTAContact";
-import AbstractPattern from "@/components/graphics/AbstractPattern";
 import Reveal from "@/components/Reveal";
 import { BLOG_POSTS } from "@/lib/data";
 import { SITE_NAME, SITE_OG_IMAGE, SITE_URL } from "@/lib/seo";
@@ -123,12 +123,8 @@ export default async function BlogPostPage({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
       />
-      <section
-        className="relative flex min-h-[55vh] flex-col justify-end overflow-hidden pb-14 pt-40 text-white"
-        style={{ background: post.gradient }}
-      >
+      <section className="relative overflow-hidden bg-[#0A0E14] pb-10 pt-40 text-white">
         <NoiseOverlay />
-        <AbstractPattern seed={post.slug} nodeCount={9} className="opacity-60" />
         <div className="relative z-10 mx-auto w-full max-w-[900px] px-6 sm:px-10">
           <Link
             href="/blog"
@@ -148,6 +144,19 @@ export default async function BlogPostPage({
           </h1>
         </div>
       </section>
+
+      <div className="mx-auto mt-4 w-full max-w-[1100px] px-6 sm:mt-8 sm:px-10">
+        <div className="relative aspect-[16/9] w-full overflow-hidden rounded-2xl border border-white/10">
+          <Image
+            src={post.image}
+            alt={post.title}
+            fill
+            sizes="(min-width: 1100px) 1100px, 100vw"
+            priority
+            className="object-cover"
+          />
+        </div>
+      </div>
 
       <article className="bg-[#0A0E14] py-16 text-white sm:py-24">
         <div className="mx-auto max-w-[720px] px-6 sm:px-10">
@@ -181,22 +190,28 @@ export default async function BlogPostPage({
             </Reveal>
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
               {more.map((p, i) => (
-                <Reveal key={p.slug} delay={i * 0.08}>
+                <Reveal key={p.slug} delay={i * 0.08} className="h-full">
                   <Link
                     href={`/blog/${p.slug}`}
-                    className="group relative flex h-64 flex-col justify-between overflow-hidden rounded-2xl p-7 text-white"
-                    style={{ background: p.gradient }}
+                    className="group flex h-full w-full flex-col overflow-hidden rounded-2xl border border-white/10 bg-white/[0.02] text-white"
                   >
-                    <AbstractPattern
-                      seed={p.slug}
-                      className="opacity-70 transition-transform duration-700 ease-out group-hover:scale-110"
-                    />
-                    <span className="relative z-10 w-fit rounded-full bg-white/15 px-3 py-1 text-xs uppercase tracking-[0.15em]">
-                      {p.category}
-                    </span>
-                    <h3 className="relative z-10 font-display text-2xl font-medium transition-transform duration-500 group-hover:-translate-y-1">
-                      {p.title}
-                    </h3>
+                    <div className="relative aspect-[16/10] w-full shrink-0 overflow-hidden">
+                      <Image
+                        src={p.image}
+                        alt=""
+                        fill
+                        sizes="(min-width: 640px) 50vw, 100vw"
+                        className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                      />
+                    </div>
+                    <div className="flex flex-1 flex-col gap-2 p-6">
+                      <span className="w-fit rounded-full border border-blue-bright/25 bg-blue-bright/10 px-3 py-1 text-xs uppercase tracking-[0.15em] text-blue-bright">
+                        {p.category}
+                      </span>
+                      <h3 className="font-display text-xl font-medium transition-transform duration-500 group-hover:-translate-y-0.5">
+                        {p.title}
+                      </h3>
+                    </div>
                   </Link>
                 </Reveal>
               ))}

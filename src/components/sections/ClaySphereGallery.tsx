@@ -86,7 +86,7 @@ export default function ClaySphereGallery() {
         height: 100%;
         object-fit: cover;
         border-radius: 10px;
-        filter: grayscale(80%) brightness(0.6);
+        filter: brightness(0.75);
         transition: all 0.4s ease;
         box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.8);
       `;
@@ -152,10 +152,10 @@ export default function ClaySphereGallery() {
         const img = card.querySelector("img") as HTMLImageElement | null;
         if (active) {
           card.style.filter = "drop-shadow(0 0 20px rgba(255, 255, 255, 0.1))";
-          if (img) img.style.filter = "grayscale(0%) brightness(1)";
+          if (img) img.style.filter = "brightness(1)";
         } else {
           card.style.filter = "";
-          if (img) img.style.filter = "grayscale(80%) brightness(0.6)";
+          if (img) img.style.filter = "brightness(0.75)";
         }
       });
     }

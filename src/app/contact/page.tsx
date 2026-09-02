@@ -23,7 +23,7 @@ const INFO = [
     href: "mailto:bravesolution43@gmail.com",
     icon: "email",
   },
-  { label: "Phone", value: "+91 80023 56170", href: "tel:+918002356170", icon: "phone" },
+  { label: "Phone", value: "+91 92297 38040", href: "tel:+919229738040", icon: "phone" },
   {
     label: "Studio",
     value: "3A, 3rd Floor J&Sons Residence, Main Road Baragain, near Ganga Hospital, Ranchi, Jharkhand 834009",

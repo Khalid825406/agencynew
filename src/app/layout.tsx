@@ -83,7 +83,7 @@ const organizationJsonLd = {
   image: `${SITE_URL}/nexbravelogobackbg.png`,
   logo: `${SITE_URL}/nexbravelogobackbg.png`,
   description: SITE_DESCRIPTION,
-  telephone: "+91-80023-56170",
+  telephone: "+91-92297-38040",
   email: "bravesolution43@gmail.com",
   priceRange: "$$",
   address: {
@@ -96,7 +96,7 @@ const organizationJsonLd = {
   },
   sameAs: [
     "https://www.facebook.com/profile.php?id=61587412182705",
-    "https://www.instagram.com/brave_solution/",
+    "https://www.instagram.com/nexbravesolutions",
   ],
 };
 
