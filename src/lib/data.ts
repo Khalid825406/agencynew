@@ -13,6 +13,9 @@ export const SERVICES = [
     ],
     tags: ["Next.js", "Headless CMS", "E-commerce", "Web apps"],
     gradient: "from-[#00AEEF] to-[#0033A0]",
+    startingPrice: "₹49,999",
+    startingPriceIntl: "$1,200",
+    priceNote: "starting price, per project",
   },
   {
     slug: "app-development",
@@ -28,6 +31,9 @@ export const SERVICES = [
     ],
     tags: ["iOS", "Android", "React Native", "App Store"],
     gradient: "from-[#0033A0] to-[#00AEEF]",
+    startingPrice: "₹99,999",
+    startingPriceIntl: "$2,500",
+    priceNote: "starting price, per project",
   },
   {
     slug: "digital-marketing",
@@ -43,6 +49,9 @@ export const SERVICES = [
     ],
     tags: ["PPC", "Social", "Email", "CRO"],
     gradient: "from-[#00AEEF] to-[#808080]",
+    startingPrice: "₹24,999",
+    startingPriceIntl: "$600",
+    priceNote: "starting price, per month",
   },
   {
     slug: "seo-services",
@@ -58,6 +67,9 @@ export const SERVICES = [
     ],
     tags: ["Technical SEO", "Content", "Local", "Link building"],
     gradient: "from-[#808080] to-[#00AEEF]",
+    startingPrice: "₹18,999",
+    startingPriceIntl: "$450",
+    priceNote: "starting price, per month",
   },
   {
     slug: "video-editing",
@@ -73,6 +85,9 @@ export const SERVICES = [
     ],
     tags: ["Motion design", "Reels", "Post-production", "VFX"],
     gradient: "from-[#0033A0] to-[#808080]",
+    startingPrice: "₹5,999",
+    startingPriceIntl: "$150",
+    priceNote: "starting price, per video",
   },
 ] as const;
 

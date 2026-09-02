@@ -4,6 +4,7 @@ import Link from "next/link";
 import PageHero from "@/components/PageHero";
 import CTAContact from "@/components/sections/CTAContact";
 import ServicesNav from "@/components/sections/ServicesNav";
+import PricingSection from "@/components/sections/PricingSection";
 import ServiceIcon from "@/components/graphics/ServiceIcon";
 import AbstractPattern from "@/components/graphics/AbstractPattern";
 import Reveal from "@/components/Reveal";
@@ -158,6 +159,8 @@ export default function ServicesPage() {
           </div>
         </div>
       </section>
+
+      <PricingSection />
 
       <CTAContact />
     </>
