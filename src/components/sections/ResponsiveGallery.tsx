@@ -1,17 +1,23 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import ClaySphereGallery from "@/components/sections/ClaySphereGallery";
-import MobileDriftGallery from "@/components/sections/MobileDriftGallery";
+import dynamic from "next/dynamic";
 
-// Server has no access to viewport width, so it always renders the desktop
-// sphere gallery. Defaulting to the same thing on the client's first render
-// (before this effect runs) keeps hydration consistent — the swap to the
-// mobile drift gallery only happens after mount, which React treats as a
-// normal post-hydration update rather than a mismatch (same pattern as the
-// prefers-reduced-motion swaps already used in Journey.tsx / KineticText.tsx).
+const ClaySphereGallery = dynamic(() => import("@/components/sections/ClaySphereGallery"), {
+  ssr: false,
+  loading: () => <div className="h-[100vh] w-full bg-[#0A0E14]" />,
+});
+const MobileGallery = dynamic(() => import("@/components/sections/MobileGallery"), {
+  ssr: false,
+  loading: () => <div className="h-[60vh] w-full bg-[#0A0E14]" />,
+});
+
+// Server has no access to viewport width, so `isMobile` starts as `null`
+// (unknown) and nothing heavy renders until the client tells us which
+// layout to load — avoids ever mounting the expensive desktop sphere
+// gallery on a phone just to tear it down again a tick later.
 export default function ResponsiveGallery() {
-  const [isMobile, setIsMobile] = useState(false);
+  const [isMobile, setIsMobile] = useState<boolean | null>(null);
 
   useEffect(() => {
     const mql = window.matchMedia("(max-width: 767px)");
@@ -22,5 +28,7 @@ export default function ResponsiveGallery() {
     return () => mql.removeEventListener("change", onChange);
   }, []);
 
-  return isMobile ? <MobileDriftGallery /> : <ClaySphereGallery />;
+  if (isMobile === null) return <div className="h-[60vh] w-full bg-[#0A0E14]" />;
+
+  return isMobile ? <MobileGallery /> : <ClaySphereGallery />;
 }
